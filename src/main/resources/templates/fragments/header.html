@@ -1,0 +1,16 @@
+<header class="header d-flex justify-content-between align-items-center" th:fragment="header" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <a href="/" class="logo">Expense Tracker</a>
+    <div sec:authorize="isAuthenticated()" class="d-flex align-items-center">
+        <nav class="nav me-3">
+            <a href="/" th:classappend="${currentPage == 'dashboard' ? 'active' : ''}">Dashboard</a>
+            <a href="/expenses" th:classappend="${currentPage == 'expenses' ? 'active' : ''}">Expenses</a>
+            <a href="/income" th:classappend="${currentPage == 'income' ? 'active' : ''}">Income</a>
+            <a href="/accounts" th:classappend="${currentPage == 'accounts' ? 'active' : ''}">Accounts</a>
+            <a href="/analytics" th:classappend="${currentPage == 'analytics' ? 'active' : ''}">Analytics</a>
+            <a href="/profile" th:classappend="${currentPage == 'profile' ? 'active' : ''}">Profile</a>
+        </nav>
+        <form th:action="@{/logout}" method="post" class="d-inline">
+            <button type="submit" class="btn btn-danger">Logout</button>
+        </form>
+    </div>
+</header>
